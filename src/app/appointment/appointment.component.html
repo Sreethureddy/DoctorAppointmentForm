@@ -1,0 +1,49 @@
+<div class="appointment-form">
+    <h2>Doctor Appointment</h2>
+    <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Full Name:</label>
+        <input id="name" formControlName="name" type="text" />
+        <div *ngIf="appointmentForm.get('name')?.touched && appointmentForm.get('name')?.invalid">
+          <small *ngIf="appointmentForm.get('name')?.hasError('required')">Name is required.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" />
+        <div *ngIf="appointmentForm.get('email')?.touched && appointmentForm.get('email')?.invalid">
+          <small *ngIf="appointmentForm.get('email')?.hasError('required')">Email is required.</small>
+          <small *ngIf="appointmentForm.get('email')?.hasError('email')">Enter a valid email address.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="phone">Phone Number:</label>
+        <input id="phone" formControlName="phone" type="text" />
+        <div *ngIf="appointmentForm.get('phone')?.touched && appointmentForm.get('phone')?.invalid">
+          <small *ngIf="appointmentForm.get('phone')?.hasError('required')">Phone is required.</small>
+          <small *ngIf="appointmentForm.get('phone')?.hasError('pattern')">Enter a valid phone number.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="appointmentDate">Appointment Date:</label>
+        <input id="appointmentDate" formControlName="appointmentDate" type="date" />
+        <div *ngIf="appointmentForm.get('appointmentDate')?.touched && appointmentForm.get('appointmentDate')?.invalid">
+          <small *ngIf="appointmentForm.get('appointmentDate')?.hasError('required')">Appointment date is required.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="time">Appointment Time:</label>
+        <input id="time" formControlName="time" type="time" />
+        <div *ngIf="appointmentForm.get('time')?.touched && appointmentForm.get('time')?.invalid">
+          <small *ngIf="appointmentForm.get('time')?.hasError('required')">Time is required.</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="appointmentForm.invalid">Submit Appointment</button>
+    </form>
+  </div>
+  
